@@ -1,0 +1,2 @@
+@TestCtrl = ($scope) ->
+  alert('hello')
