@@ -17,8 +17,9 @@ angular.module('Blog').factory('postData', ['$http', ($http) ->
 
   postData.createPost = (newPost) ->
     # client side data validation
-    if newPost.newPostTitle == '' or newPostContents == ''
+    if newPost.newPostTitle == '' or newPost.newPostContents == ''
       alert('Title or content cannot be blank, foo!')
+      false
 
     #create data object to post
     data =
@@ -34,7 +35,7 @@ angular.module('Blog').factory('postData', ['$http', ($http) ->
       console.log 'Failed to create new post'
     )
 
-    true
+    return true
 
   postData
 

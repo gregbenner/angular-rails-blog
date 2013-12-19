@@ -14,6 +14,10 @@
     $location.url('/')
 
   $scope.createPost = ->
-    console.log $scope.formData
+    postData.createPost($scope.formData)
+
+  $scope.clearPost = ->
+    $scope.formData.newPostTitle = ''
+    $scope.formData.newPostContents = ''
 
 @CreatePostCtrl.$inject = ['$scope', '$location', 'postData']
