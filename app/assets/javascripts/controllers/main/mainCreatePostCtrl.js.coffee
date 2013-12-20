@@ -1,7 +1,7 @@
 @CreatePostCtrl = ($scope, $location, postData) ->
 
   $scope.data = postData.data
-  postData.loadPosts()
+  postData.loadPosts(null)
 
   $scope.formData =
     newPostTitle: ''

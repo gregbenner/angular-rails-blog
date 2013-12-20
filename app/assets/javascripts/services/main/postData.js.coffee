@@ -5,15 +5,22 @@ angular.module('Blog').factory('postData', ['$http', ($http) ->
       posts: [{title: 'Loading', contents: ''}]
     isLoaded: false
 
-  postData.loadPosts = ->
+  postData.loadPosts = (deferred) ->
     unless postData.isLoaded
       $http.get('./posts.json').success( (data) ->
         postData.data.posts = data
         postData.isLoaded = true
         console.log('Successfully loaded posts.')
+        if deferred
+          deferred.resolve()
       ).error( ->
         console.error('Failed to load posts.')
+        if deferred
+          deferred.reject('failed to load posts!')
       )
+    else
+      if deferred
+        deferred.resolve()
 
   postData.createPost = (newPost) ->
     # client side data validation

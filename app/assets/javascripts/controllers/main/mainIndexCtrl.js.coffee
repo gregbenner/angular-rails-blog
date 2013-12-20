@@ -2,7 +2,7 @@
 
   $scope.data = postData.data
 
-  postData.loadPosts()
+  postData.loadPosts(null)
 
   $scope.viewPost = (postId) ->
     $location.url('/post/'+postId)
